@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_forecast/horizontal_list_view.dart';
 
 // import 'package:flutter/services.dart';
 
@@ -47,27 +48,56 @@ Widget _buildbody() {
           '7-DAY WEATHER FORECAST',
           style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
-        )
+        ),
+        const SizedBox(height: 36),
+        Container(
+          height: 150,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 7,
+            itemBuilder: (BuildContext context, int index) {
+              List<String> daysOfWeek = [
+                'Friday',
+                'Saturday',
+                'Sunday',
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday'
+              ];
+              return WeatherDayWidget(
+                  dayName: daysOfWeek[index],
+                  temperature: generateRandomTemperature());
+            },
+          ),
+        ),
       ],
     ),
   );
 }
 
-Row _textField() {
-  return const Row(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: <Widget>[
-      Padding(
-        padding: EdgeInsets.only(left: 16.0, top: 8.0, right: 8.0, bottom: 8.0),
-        child: Icon(
+Widget _textField() {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: TextField(
+      decoration: InputDecoration(
+        prefixIcon: const Icon(
           Icons.search,
           color: Color.fromARGB(255, 255, 255, 252),
         ),
+        hintText: 'Enter City Name',
+        hintStyle: const TextStyle(fontSize: 20, color: Colors.white),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
       ),
-      SizedBox(width: 15),
-      Text('Enter City Name',
-          style: TextStyle(fontSize: 20, color: Colors.white))
-    ],
+      style: const TextStyle(fontSize: 20, color: Colors.white),
+    ),
   );
 }
 
