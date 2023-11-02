@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,13 +32,17 @@ Widget _buildbody() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        _TextField(),
+        _textField(),
+        const SizedBox(height: 26),
+        _cityDetail(),
+        const SizedBox(height: 36),
+        _temperatureDatail(),
       ],
     ),
   );
 }
 
-Row _TextField() {
+Row _textField() {
   return const Row(
     mainAxisAlignment: MainAxisAlignment.start,
     children: <Widget>[
@@ -52,6 +56,66 @@ Row _TextField() {
       SizedBox(width: 15),
       Text('Enter City Name',
           style: TextStyle(fontSize: 20, color: Colors.white))
+    ],
+  );
+}
+
+Column _cityDetail() {
+  return const Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Text(
+        'Odesskaya Oblast, UA',
+        style: TextStyle(
+            fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+      ),
+      Divider(),
+      Text(
+        'Friday, Nov 04, 2023',
+        style: TextStyle(fontSize: 20, color: Colors.white),
+      ),
+    ],
+  );
+}
+
+Row _temperatureDatail() {
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Icon(
+            Icons.wb_sunny_outlined,
+            color: Colors.white,
+            size: 100,
+          )
+        ],
+      ),
+      SizedBox(width: 20),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Text(
+                '14°F',
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                'LIGHT SNOW',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          )
+        ],
+      )
     ],
   );
 }
