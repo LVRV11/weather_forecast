@@ -1,37 +1,32 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:weather_forecast/weather_day_widget.dart';
 
-class WeatherDayWidget extends StatelessWidget {
-  final String dayName;
-  final int temperature;
-
-  WeatherDayWidget({required this.dayName, required this.temperature});
+class SevenDayForecast extends StatelessWidget {
+  const SevenDayForecast({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(
-        color: Colors.orange,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(dayName,
-              style: const TextStyle(fontSize: 24, color: Colors.white)),
-          const Icon(Icons.wb_sunny_outlined, color: Colors.white, size: 50),
-          Text('$temperature°F',
-              style: const TextStyle(fontSize: 20, color: Colors.white)),
-        ],
+      height: 150,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 7,
+        itemBuilder: (BuildContext context, int index) {
+          List<String> daysOfWeek = [
+            'Friday',
+            'Saturday',
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday'
+          ];
+          return WeatherDayWidget(
+            dayName: daysOfWeek[index],
+            temperature: generateRandomTemperature(),
+          );
+        },
       ),
     );
   }
-}
-
-int generateRandomTemperature() {
-  Random random = Random();
-  return random.nextInt(16) +
-      5; // Генерирует случайное число от 0 до 15 и прибавляет 5
 }
