@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 // import 'package:flutter/services.dart';
 
 void main() {
@@ -12,11 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 239, 115, 20),
+        backgroundColor: const Color.fromARGB(255, 219, 77, 42),
         appBar: AppBar(
           title: const Text(
             'Weather Forecast',
-            style: TextStyle(color: Color.fromARGB(221, 255, 255, 255)),
+            style: TextStyle(
+              color: Color.fromARGB(221, 255, 255, 255),
+            ),
           ),
           centerTitle: true,
           backgroundColor: Colors.orange,
@@ -37,6 +40,14 @@ Widget _buildbody() {
         _cityDetail(),
         const SizedBox(height: 36),
         _temperatureDatail(),
+        const SizedBox(height: 36),
+        _extraWeatherDetail(),
+        const SizedBox(height: 36),
+        const Text(
+          '7-DAY WEATHER FORECAST',
+          style: TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
+        )
       ],
     ),
   );
@@ -82,16 +93,21 @@ Row _temperatureDatail() {
   return const Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Icon(
-            Icons.wb_sunny_outlined,
-            color: Colors.white,
-            size: 100,
-          )
-        ],
+      Icon(
+        Icons.wb_sunny_outlined,
+        color: Colors.white,
+        size: 100,
       ),
+      // Column(
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: <Widget>[
+      //     Icon(
+      //       Icons.wb_sunny_outlined,
+      //       color: Colors.white,
+      //       size: 100,
+      //     )
+      //   ],
+      // ),
       SizedBox(width: 20),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,6 +130,74 @@ Row _temperatureDatail() {
               ),
             ],
           )
+        ],
+      )
+    ],
+  );
+}
+
+Row _extraWeatherDetail() {
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: <Widget>[
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.ac_unit,
+            size: 30,
+            color: Colors.white,
+          ),
+          SizedBox(height: 5),
+          Text(
+            '5',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+          SizedBox(height: 5),
+          Text(
+            'km/hr',
+            style: TextStyle(fontSize: 15, color: Colors.white),
+          ),
+        ],
+      ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.ac_unit,
+            size: 30,
+            color: Colors.white,
+          ),
+          SizedBox(height: 5),
+          Text(
+            '3',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+          SizedBox(height: 5),
+          Text(
+            '%',
+            style: TextStyle(fontSize: 15, color: Colors.white),
+          ),
+        ],
+      ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.ac_unit,
+            size: 30,
+            color: Colors.white,
+          ),
+          SizedBox(height: 5),
+          Text(
+            '20',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+          SizedBox(height: 5),
+          Text(
+            '%',
+            style: TextStyle(fontSize: 15, color: Colors.white),
+          ),
         ],
       )
     ],
